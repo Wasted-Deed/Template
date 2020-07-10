@@ -5,10 +5,15 @@ import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import wasteed.project.template.Card;
+import wasteed.project.template.CardSolver;
 import wasteed.project.template.GameField;
+import wasteed.project.template.Player;
+import wasteed.project.template.R;
 import wasteed.project.template.engine.Vector2;
 
 
@@ -22,6 +27,8 @@ public class ThreadSolver extends SurfaceView implements SurfaceHolder.Callback 
     public static boolean HAD_TOUCHED;
     private MainThread thread;
     private GameField gameField;
+    private CardSolver cardSolver;
+    private Player player;
     private Layout currentLayout;
 
     private static ArrayList<MotionEvent> touches;
@@ -43,10 +50,12 @@ public class ThreadSolver extends SurfaceView implements SurfaceHolder.Callback 
         touches = new ArrayList<>();
     }
 
-    private void onSurfaceCreated() {
+    private void onSurfaceCreated()
+    {
         SCREEN_WIDTH = getWidth();
         SCREEN_HEIGHT = getHeight();
         gameField = new GameField(320, 100);
+        cardSolver=new CardSolver(this.getContext());
     }
 
     @Override
@@ -124,6 +133,7 @@ public class ThreadSolver extends SurfaceView implements SurfaceHolder.Callback 
         switch (currentLayout) {
             case GAME_FIELD:
                 gameField.update();
+                cardSolver.update(player);
                 break;
             case MENU:
                 break;

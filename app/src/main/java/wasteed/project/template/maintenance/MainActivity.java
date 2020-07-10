@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
+
+import wasteed.project.template.Card;
+import wasteed.project.template.R;
 
 public class MainActivity extends Activity {
 
@@ -24,8 +28,10 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void start() {
+    private void start()
+    {
         ResourceLoader.loadResources(getResources());
+
         ThreadSolver solver = new ThreadSolver(this);
         setContentView(solver);
     }
@@ -41,7 +47,7 @@ public class MainActivity extends Activity {
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
         getWindow().getDecorView().setSystemUiVisibility(UI_OPTIONS);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 }
 

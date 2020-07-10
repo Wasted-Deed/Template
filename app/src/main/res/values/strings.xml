@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Template</string>
+    <string name="app_name">Template</string>\
+    <string name="text_card">Здесь будет событие</string>
 </resources>
